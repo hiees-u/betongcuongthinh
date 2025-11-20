@@ -1,32 +1,31 @@
-name: Deploy site to gh-pages
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     permissions:
-      contents: write
+      contents: read
       pages: write
       id-token: write
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: List directories
-        run: ls -R .
-
+      # Tạo file .nojekyll để GitHub Pages không bỏ qua các file bắt đầu bằng _
       - name: Disable Jekyll
         run: touch ./betongcuongthinh-mirror/betongcuongthinh.com/.nojekyll
 
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v3
+      # Upload đúng thư mục đã có sẵn file HTML tĩnh
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: ./betongcuongthinh-mirror/betongcuongthinh.com
+          # Đây là dòng quan trọng nhất!
+          path: ./betongcuongthinh-mirror/betongcuongthinh.com
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
