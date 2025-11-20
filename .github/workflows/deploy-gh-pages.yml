@@ -18,7 +18,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Kiểm tra folder có tồn tại (debug)
+      # Debug xem folder có thật không
       - name: List directories
         run: ls -R .
 
@@ -27,4 +27,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: ./betongcuo_
+          publish_dir: ./betongcuongthinh-mirror/betongcuongthinh.com
