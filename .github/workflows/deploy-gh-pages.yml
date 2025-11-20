@@ -18,9 +18,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Kiểm tra folder có tồn tại (debug)
+      - name: List directories
+        run: ls -R .
+
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: ./betongcuongthinh-mirror/betongcuongthinh.com
+          publish_dir: ./betongcuo_
