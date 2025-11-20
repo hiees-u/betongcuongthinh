@@ -1,30 +1,50 @@
-name: Deploy site to gh-pages
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: write
-      pages: write
-      id-token: write
-
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      # Debug xem folder có thật không
-      - name: List directories
-        run: ls -R .
+      # Tạo thư mục tạm để chuẩn bị file deploy
+      - name: Prepare deploy folder
+        run: |
+          mkdir deploy-temp
 
-      - name: Deploy to gh-pages
+          # Copy 3 file HTML chính vào root
+          cp index.html lien-he.html san-pham.html deploy-temp/
+
+          # Copy toàn bộ thư mục Content và Scripts (cái mà HTML đang trỏ tới)
+          cp -r betongcuongthinh-mirror/betongcuongthinh.com/Content deploy-temp/
+          cp -r betongcuongthinh-mirror/betongcuongthinh.com/Scripts deploy-temp/
+
+          # Copy .htaccess nếu cần (nếu có rewrite rule)
+          cp betongcuongthinh-mirror/betongcuongthinh.com/.htaccess deploy-temp/ 2>/dev/null || true
+
+          # Tạo file .nojekyll để không bị bỏ qua file _
+          touch deploy-temp/.nojekyll
+
+      # Cách 1: Dùng peaceiris (bạn đang dùng)
+      - name: Deploy với peaceiris
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./deploy-temp
           publish_branch: gh-pages
-          publish_dir: ./betongcuongthinh-mirror/betongcuongthinh.com
+          force_orphan: true   # làm sạch branch gh-pages mỗi lần deploy
+
+      # Nếu muốn đổi sang action chính thức của GitHub (khuyên dùng lâu dài)
+      # Thay 2 bước trên bằng:
+      # - name: Upload artifact
+      #   uses: actions/upload-pages-artifact@v3
+      #   with:
+      #     path: ./deploy-temp
+      # - name: Deploy to GitHub Pages
+      #   uses: actions/deploy-pages@v4
+      #   id: deployment
