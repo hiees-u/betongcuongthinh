@@ -3,34 +3,20 @@ name: Deploy site to gh-pages
 on:
   push:
     branches:
-      - main   # khi bạn push vào main thì deploy tự động
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: read   # đọc repo
-      pages: write     # cho phép ghi cho GitHub Pages
-      id-token: write  # cần nếu dùng OIDC (không bắt buộc ở đây, nhưng an toàn)
+      contents: write
+      pages: write
+      id-token: write
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          persist-credentials: false  # tắt credentials mặc định (an toàn)
-
-      # (Tuỳ nếu bạn cần build step, ví dụ npm install & npm run build, 
-      #  thêm các bước build ở đây trước khi deploy)
-      # - name: Setup Node.js
-      #   uses: actions/setup-node@v4
-      #   with:
-      #     node-version: '18'
-      # - name: Install & build
-      #   run: |
-      #     npm ci
-      #     npm run build
-      # nếu site tĩnh thì bỏ qua phần build
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
@@ -38,4 +24,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: ./betongcuongthinh-mirror/betongcuongthinh.com
-          keep_files: false    # true nếu bạn muốn giữ files hiện có trên gh-pages (thường false)
