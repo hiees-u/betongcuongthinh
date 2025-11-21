@@ -23,18 +23,18 @@ jobs:
           # Copy CSS, JS, IMAGES
           cp -r Content deploy-temp/
           cp -r Scripts deploy-temp/
-
-          # Copy upload images (nếu site có dùng)
-          if [ -d upload ]; then
-            cp -r upload deploy-temp/
-          fi
-
-          cp -r betongcuongthinh-mirror/admin.betongcuongthinh.com/upload deploy-temp/
+          cp -r banner deploy-temp/
+          cp -r blog deploy-temp/
+          cp -r brand-logo deploy-temp/
+          cp -r files deploy-temp/
+          cp -r icon deploy-temp/
+          cp -r logo deploy-temp/
+          cp -r product deploy-temp/
 
           # Copy .htaccess nếu có
           cp .htaccess deploy-temp/ 2>/dev/null || true
 
-          # Bắt buộc cho GitHub Pages để không xóa folder bắt đầu bằng _
+          # Bắt buộc cho GitHub Pages
           touch deploy-temp/.nojekyll
 
       - name: Deploy với gh-pages
