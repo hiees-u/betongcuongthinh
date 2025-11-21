@@ -16,22 +16,28 @@ jobs:
         run: |
           mkdir deploy-temp
 
-          # Copy các file HTML chính
           cp index.html deploy-temp/
           cp lien-he.html deploy-temp/
           cp san-pham.html deploy-temp/
 
-          # Copy thư mục Content và Scripts
+          # Copy CSS, JS, IMAGES
           cp -r Content deploy-temp/
           cp -r Scripts deploy-temp/
+
+          # Copy upload images (nếu site có dùng)
+          if [ -d upload ]; then
+            cp -r upload deploy-temp/
+          fi
+
+          cp -r betongcuongthinh-mirror/admin.betongcuongthinh.com/upload deploy-temp/
 
           # Copy .htaccess nếu có
           cp .htaccess deploy-temp/ 2>/dev/null || true
 
-          # Tạo .nojekyll để GitHub Pages không bỏ file dạng _
+          # Bắt buộc cho GitHub Pages để không xóa folder bắt đầu bằng _
           touch deploy-temp/.nojekyll
 
-      - name: Deploy với peaceiris
+      - name: Deploy với gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
