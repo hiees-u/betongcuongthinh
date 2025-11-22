@@ -23,6 +23,7 @@ jobs:
           cp coc-van-be-tong-ung-luc-pd27ef277cba6c.html deploy-temp/
           cp coc-vuong-be-tong-pd27ef2c3fa0cfd.html deploy-temp/
           cp cong-be-tong-ly-tam-pd27ef313aa8189.html deploy-temp/
+          cp cong-hop-pd28e12ad2890b3.html deploy-temp/
 
           # Copy CSS, JS, IMAGES
           cp -r Content deploy-temp/
