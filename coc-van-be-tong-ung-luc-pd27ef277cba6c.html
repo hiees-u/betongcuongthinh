@@ -920,17 +920,6 @@
         var footer_menu = sessionStorage.getItem("footer_menu");
         if (footer_menu) {
           $(footer_menu).insertAfter("#footer-menu");
-        } else {
-          $.ajax({
-            method: "GET",
-            url: "/home/getFooterMenu",
-            dataType: "html",
-          })
-            .done(function (data) {
-              $(data).insertAfter("#footer-menu");
-              sessionStorage.setItem("footer_menu", data);
-            })
-            .fail(function () {});
         }
 
         window.onbeforeunload = function (event) {
