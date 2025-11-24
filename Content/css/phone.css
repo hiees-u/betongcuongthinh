@@ -465,7 +465,11 @@
 
         display: block;
 
-        bottom: 20%
+        bottom: 20%;
+
+        height: fit-content;
+
+        width: fit-content;
 
     }
 
