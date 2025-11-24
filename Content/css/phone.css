@@ -501,6 +501,8 @@
         position: fixed;
         top: 40%;
         left: 0;
+        width: fit-content;
+        height: fit-content;
     }
 
 }
