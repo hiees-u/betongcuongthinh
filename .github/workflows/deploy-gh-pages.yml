@@ -25,6 +25,7 @@ jobs:
           cp cong-be-tong-ly-tam-pd27ef313aa8189.html deploy-temp/
           cp cong-hop-pd28e12ad2890b3.html deploy-temp/
           cp day-chuyen-cong-btlt.html deploy-temp/
+          cp coc-be-tong-ly-tam.html deploy-temp/
 
           # Copy CSS, JS, IMAGES
           cp -r Content deploy-temp/
