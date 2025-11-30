@@ -1,0 +1,112 @@
+ï»¿@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import url('../fonts/bt-icon/bootstrap-icons.css');
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+body,
+p {
+    font-size: 14px;
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 300;
+    line-height: 28px;
+}
+
+blockquote {
+    margin-bottom: 30px;
+    border-left: 4px solid #f4d100;
+    padding-left: 24px;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Inter Tight', sans-serif;
+    margin-bottom: 15px;
+}
+
+
+.about-us-content h3 {
+    font-family: 'Inter Tight', sans-serif;
+}
+
+.about-us-content p {
+    font-family: 'Inter Tight', sans-serif;
+}
+
+.section-title-btn-wrap .section-title h2 {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Inter Tight', sans-serif;
+    margin: 0;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.dec-review-bottom .description-wrap p {
+    font-size: 14px;
+    line-height: 30px;
+    margin: 0 0 20px;
+}
+
+.single-product-wrap .product-content-wrap .product-content-left span {
+    font-family: 'Inter Tight', sans-serif;
+}
+.h1, h1 {
+    font-size: 26px;
+}
+
+.h2, h2 {
+    font-size: 23px;
+}
+
+.h3, h3 {
+    font-size: 20px;
+}
+
+.h4, h4 {
+    font-size: 17px;
+}
+
+.h5, h5 {
+    font-size: 14px;
+	    font-size: 14px;
+    line-height: 20px;
+}
+
+.h6, h6 {
+    font-size: 11px;
+}
+
+@media(max-width:767px) {
+
+    .h1, h1 {
+        font-size: calc(26px * 0.8);
+    }
+
+    .h2, h2 {
+        font-size: calc(23px * 0.8);
+    }
+
+    .h3, h3 {
+        font-size: calc(20px * 0.8);
+    }
+
+    .h4, h4 {
+        font-size: calc(17px * 0.8);
+    }
+
+    .h5, h5 {
+        font-size: calc(14px);
+		line-height: 25px;
+    }
+
+    .h6, h6 {
+        font-size: calc(11px);
+		line-height: 25px;
+    }
+}
